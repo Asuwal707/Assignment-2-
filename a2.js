@@ -11,11 +11,25 @@
 // Importing the collegeData module
 const collegeData = require('./modules/collegeData');
 
-collegeData.initialize()
+collegeData.initialize() //initializing our function
     .then(() => {
         return collegeData.getAllStudents();
     })
+    //retriving students 
     .then(students => {
-        console.log(`Successfully retrieved ${students.length} students`);
+        console.log(`Successfully retrieved ${students.length} students`); // using template literal
         return collegeData.getCourses();
+    })
+    //retriving course
+    .then(courses => {
+        console.log(`Successfully retrieved ${courses.length} courses`);
+        return collegeData.getTAs();
+    })
+    //returining  tas
+    .then(tas => {
+        console.log(`Successfully retrieved ${tas.length} TAs`);
+    })
+    // error handling incase there are any promise that are rejected .
+    .catch(err => {
+        console.log(err);
     });
