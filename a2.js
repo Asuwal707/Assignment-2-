@@ -8,5 +8,14 @@
 *
 ********************************************************************************/
 
-// Importing collegeData module
+// Importing the collegeData module
 const collegeData = require('./modules/collegeData');
+
+collegeData.initialize()
+    .then(() => {
+        return collegeData.getAllStudents();
+    })
+    .then(students => {
+        console.log(`Successfully retrieved ${students.length} students`);
+        return collegeData.getCourses();
+    });
